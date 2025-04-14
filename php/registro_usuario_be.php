@@ -7,7 +7,7 @@ $correo = $_POST['correo'];
 $contrasena = $_POST['contrasena'];
 $confirmar_contrasena = $_POST['confirmar_contrasena'];
 
-// Validar campos vacíos
+
 if(empty($nombre_completo) || empty($correo) || empty($contrasena) || empty($confirmar_contrasena)) {
     echo '
         <script>
@@ -18,7 +18,7 @@ if(empty($nombre_completo) || empty($correo) || empty($contrasena) || empty($con
     exit();
 }
 
-// Validar que las contraseñas coincidan
+
 if($contrasena != $confirmar_contrasena) {
     echo '
         <script>
@@ -29,7 +29,7 @@ if($contrasena != $confirmar_contrasena) {
     exit();
 }
 
-// Validar formato de correo
+
 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     echo '
         <script>
@@ -40,7 +40,7 @@ if(!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     exit();
 }
 
-// Validar longitud de contraseña
+
 if(strlen($contrasena) < 8) {
     echo '
         <script>
@@ -51,11 +51,11 @@ if(strlen($contrasena) < 8) {
     exit();
 }
 
-// Hashear contraseñas
+s
 $contrasena = hash('sha512', $contrasena);
 $confirmar_contrasena = hash('sha512', $confirmar_contrasena);
 
-// Verificar si el correo ya existe
+
 $verificar_correo = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo='$correo'");
 
 if(mysqli_num_rows($verificar_correo) > 0) {
@@ -68,7 +68,7 @@ if(mysqli_num_rows($verificar_correo) > 0) {
     exit();
 }
 
-// Insertar nuevo usuario
+
 $query = "INSERT INTO usuarios(nombre_completo, correo, contrasena) 
           VALUES('$nombre_completo', '$correo', '$contrasena')";
 
