@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Datos de productos con precios en COP (Colombia)
+    
     const products = [
         {
             id: 1,
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     ];
 
-    // Formatear precios en COP
+    
     function formatPrice(price) {
         return new Intl.NumberFormat('es-CO', {
             style: 'currency',
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }).format(price);
     }
 
-    // Variables del carrito
+    
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartModal = document.getElementById('cart-modal');
     const cartItemsContainer = document.getElementById('cart-items');
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartCountElement = document.querySelector('.cart-count');
     const cartIcon = document.getElementById('cart-icon');
 
-    // Variables para autenticación
+    
     const loginModal = document.getElementById('login-modal');
     const registerModal = document.getElementById('register-modal');
     const loginBtn = document.getElementById('login-btn');
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
 
-    // Elementos de error
+    
     const emailError = document.getElementById('email-error');
     const passwordError = document.getElementById('password-error');
     const nameError = document.getElementById('name-error');
@@ -138,18 +138,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const regPasswordError = document.getElementById('reg-password-error');
     const confirmError = document.getElementById('confirm-error');
 
-    // Variables para el slider de ofertas
+    
     const offerSlides = document.querySelectorAll('.offer-slide');
     const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
     let slideInterval;
 
-    // Modal de producto
+    
     const productModal = document.getElementById('product-modal');
     const productModalBody = document.getElementById('product-modal-body');
     const closeProductModal = document.querySelector('.close-product-modal');
 
-    // Mostrar productos con precios formateados
+    
     function displayProducts(filter = 'all') {
         const productGrid = document.getElementById('product-grid');
         productGrid.innerHTML = '';
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
             productGrid.appendChild(productCard);
         });
 
-        // Event listeners para botones
+       s
         document.querySelectorAll('.add-to-cart').forEach(button => {
             button.addEventListener('click', addToCart);
         });
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Mostrar detalles del producto
+    
     function showProductDetails(e) {
         const productId = parseInt(e.target.getAttribute('data-id'));
         const product = products.find(p => p.id === productId);
@@ -219,17 +219,17 @@ document.addEventListener('DOMContentLoaded', function() {
         productModal.classList.add('active');
         document.body.style.overflow = 'hidden';
         
-        // Agregar evento al botón de añadir al carrito dentro del modal
+     
         productModalBody.querySelector('.add-to-cart').addEventListener('click', addToCart);
         
-        // Agregar evento al botón de cerrar
+       
         productModalBody.querySelector('.close-product-btn').addEventListener('click', () => {
             productModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
     }
 
-    // Filtrar productos
+    
     document.querySelectorAll('.filter-btn').forEach(button => {
         button.addEventListener('click', function() {
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -239,18 +239,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Validación de email
+    
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(String(email).toLowerCase());
     }
 
-    // Validación de contraseña
+   
     function validatePassword(password) {
         return password.length >= 8;
     }
 
-    // Limpiar errores
+    
     function clearErrors() {
         emailError.textContent = '';
         passwordError.textContent = '';
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', function() {
         confirmError.textContent = '';
     }
 
-    // Añadir al carrito
+   
     function addToCart(e) {
         const productId = parseInt(e.target.getAttribute('data-id'));
         const product = products.find(p => p.id === productId);
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
         saveCartToLocalStorage();
     }
 
-    // Actualizar carrito
+    
     function updateCart() {
         cartItemsContainer.innerHTML = '';
         
@@ -316,33 +316,33 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // Calcular totales
+      
         const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         const shipping = subtotal > 2000000 ? 0 : 25000; // Envío gratis para compras mayores a $2,000,000 COP
         const total = subtotal + shipping;
         
-        // Actualizar UI
+        
         cartSubtotalElement.textContent = formatPrice(subtotal);
         cartShippingElement.textContent = shipping === 0 ? 'Gratis' : formatPrice(shipping);
         cartTotalElement.textContent = formatPrice(total);
         
-        // Actualizar contador
+        
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         cartCountElement.textContent = totalItems;
     }
 
-    // Guardar carrito en localStorage
+   
     function saveCartToLocalStorage() {
         localStorage.setItem('cart', JSON.stringify(cart));
     }
 
-    // Mostrar notificación
+    
     function showNotification(message, type = 'success') {
         const notification = document.getElementById('notification');
         notification.textContent = message;
         notification.className = `notification ${type}`;
         
-        // Agregar icono según el tipo
+       
         let icon = '';
         switch(type) {
             case 'success':
@@ -372,7 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000);
     }
 
-    // Manejar eventos del carrito
+    
     cartItemsContainer.addEventListener('click', function(e) {
         if (e.target.classList.contains('decrease')) {
             const productId = parseInt(e.target.getAttribute('data-id'));
@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Abrir/cerrar carrito
+   
     cartIcon.addEventListener('click', function() {
         cartModal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -420,12 +420,12 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto';
     });
 
-    // Procesar pago
+   
     document.querySelector('.checkout-btn').addEventListener('click', function() {
         if (cart.length === 0) {
             showNotification('Tu carrito está vacío', 'error');
         } else {
-            // Aplicar descuento si hay más de 2 productos
+            
             let discount = 0;
             if (cart.reduce((sum, item) => sum + item.quantity, 0) > 2) {
                 discount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 0.1; // 10% de descuento
@@ -441,7 +441,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             showNotification(`Compra realizada por ${formatPrice(grandTotal)}. ¡Gracias por tu compra!`, 'success');
             
-            // Vaciar carrito
+           
             cart = [];
             updateCart();
             saveCartToLocalStorage();
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Autenticación
+    
     loginBtn.addEventListener('click', function() {
         clearErrors();
         loginModal.classList.add('active');
@@ -521,19 +521,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Menu móvil
+   
     mobileMenuBtn.addEventListener('click', function() {
         mobileMenu.classList.toggle('active');
     });
 
-    // Cerrar menú móvil al hacer clic en un enlace
+    
     document.querySelectorAll('.mobile-menu a').forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
         });
     });
 
-    // Slider de ofertas
+   
     function showSlide(index) {
         offerSlides.forEach((slide, i) => {
             slide.classList.toggle('active', i === index);
@@ -579,22 +579,22 @@ document.addEventListener('DOMContentLoaded', function() {
         startSlideInterval();
     }
 
-    // Auto-avance del slider
+   
     startSlideInterval();
 
-    // Pausar slider al interactuar
+   
     const slider = document.querySelector('.offer-slider');
     slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
     slider.addEventListener('mouseleave', startSlideInterval);
 
-    // Formulario de contacto
+   
     document.getElementById('contact-form').addEventListener('submit', function(e) {
         e.preventDefault();
         showNotification('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.', 'success');
         this.reset();
     });
 
-    // Newsletter
+    
     document.getElementById('newsletter-form').addEventListener('submit', function(e) {
         e.preventDefault();
         const email = this.querySelector('input').value.trim();
@@ -617,7 +617,7 @@ document.addEventListener('DOMContentLoaded', function() {
         this.reset();
     });
 
-    // Actualizar UI de autenticación
+   
     function updateAuthUI() {
         const loggedIn = document.cookie.includes('loggedIn=true');
         
@@ -626,7 +626,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('register-btn').style.display = 'none';
             document.getElementById('user-profile').style.display = 'flex';
             
-            // Obtener nombre de usuario de la cookie
+            
             const username = document.cookie.split('; ').find(row => row.startsWith('username='));
             if (username) {
                 document.getElementById('username-display').textContent = username.split('=')[1];
@@ -638,7 +638,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Cerrar sesión
+  
     logoutBtn.addEventListener('click', function() {
         document.cookie = 'loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
@@ -646,13 +646,13 @@ document.addEventListener('DOMContentLoaded', function() {
         showNotification('Has cerrado sesión correctamente', 'success');
     });
 
-    // Inicializar
+  
     displayProducts();
     showSlide(currentSlide);
     updateAuthUI();
     updateCart();
     
-    // Cerrar menú al hacer clic fuera
+    
     document.addEventListener('click', function(e) {
         if (!mobileMenu.contains(e.target) && e.target !== mobileMenuBtn) {
             mobileMenu.classList.remove('active');
