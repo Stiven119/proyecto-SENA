@@ -5,7 +5,7 @@ include 'conexion_be.php';
 $correo = $_POST['correo'];
 $contrasena = $_POST['contrasena'];
 
-// Validar campos vacíos
+s
 if(empty($correo) || empty($contrasena)) {
     echo '
         <script>
@@ -16,7 +16,7 @@ if(empty($correo) || empty($contrasena)) {
     exit();
 }
 
-// Hashear contraseña
+
 $contrasena = hash('sha512', $contrasena);
 
 $validar_login = mysqli_query($conexion, "SELECT * FROM usuarios WHERE correo='$correo'");
