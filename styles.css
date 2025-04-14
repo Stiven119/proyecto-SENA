@@ -104,7 +104,7 @@ body {
     margin: 0 auto;
 }
 
-/* Header */
+
 header {
     background-color: var(--primary-color);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
@@ -321,7 +321,7 @@ nav ul li a:hover::after {
     color: var(--accent-color);
 }
 
-/* Hero Section */
+/
 .hero {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                 url('assets/hero-bg.jpg');
@@ -360,7 +360,7 @@ nav ul li a:hover::after {
     justify-content: center;
 }
 
-/* Productos */
+
 .products {
     padding: 100px 0;
     background-color: var(--secondary-color);
@@ -505,7 +505,7 @@ nav ul li a:hover::after {
     background-color: var(--dark-gray);
 }
 
-/* Ofertas */
+
 .offers {
     padding: 100px 0;
     background-color: var(--primary-color);
@@ -634,7 +634,7 @@ nav ul li a:hover::after {
     background-color: var(--accent-color);
 }
 
-/* Testimonios */
+
 .testimonials {
     padding: 100px 0;
     background-color: var(--secondary-color);
@@ -786,7 +786,7 @@ nav ul li a:hover::after {
     resize: vertical;
 }
 
-/* Mapa */
+
 .map {
     height: 450px;
     width: 100%;
@@ -798,7 +798,7 @@ nav ul li a:hover::after {
     border: none;
 }
 
-/* Footer */
+
 footer {
     background-color: var(--dark-gray);
     padding: 70px 0 0;
@@ -920,7 +920,7 @@ footer {
     color: var(--accent-color);
 }
 
-/* Modales de Autenticación */
+
 .auth-modal {
     display: none;
     position: fixed;
@@ -1052,7 +1052,7 @@ footer {
     min-height: 18px;
 }
 
-/* Carrito */
+
 .cart-modal {
     display: none;
     position: fixed;
@@ -1242,7 +1242,7 @@ footer {
     font-weight: 600;
 }
 
-/* Modal de Producto */
+
 .product-modal {
     display: none;
     position: fixed;
@@ -1367,7 +1367,7 @@ footer {
     flex: 1;
 }
 
-/* Notificaciones */
+
 .notification {
     position: fixed;
     bottom: 20px;
@@ -1412,7 +1412,7 @@ footer {
     font-size: 1.2rem;
 }
 
-/* Animaciones */
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -1422,7 +1422,7 @@ footer {
     }
 }
 
-/* Responsive */
+
 @media (max-width: 1200px) {
     .product-modal-body {
         grid-template-columns: 1fr;
